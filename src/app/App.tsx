@@ -139,7 +139,7 @@ function ContextChip({ value, onChange }: { value: Scope; onChange: (s: Scope) =
       role="tablist"
       aria-label="Контекст"
       onKeyDown={onKeyDown}
-      className="relative inline-flex items-center rounded-full bg-[rgba(11,15,20,.06)] p-1 h-9 select-none"
+      className="relative inline-flex items-center rounded-full bg-[var(--bg-secondary)] p-1 h-9 select-none"
     >
       <span
         className="absolute left-0 top-1 bottom-1 rounded-full bg-[var(--accent)] pointer-events-none
@@ -158,7 +158,7 @@ function ContextChip({ value, onChange }: { value: Scope; onChange: (s: Scope) =
           onClick={() => onChange(it.key)}
           className={
             "relative z-[1] h-8 px-3 rounded-full text-[13px] font-medium transition-colors whitespace-nowrap " +
-            (value === it.key ? "text-white" : "text-[rgba(11,15,20,.66)] hover:text-[rgba(11,15,20,.9)]")
+            (value === it.key ? "text-white" : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]")
           }
         >
           {it.label}
@@ -195,7 +195,7 @@ function MiniCalendar({ selected, onSelect }: { selected: string; onSelect: (v: 
         </div>
         <div className="flex items-center gap-1">
           <button
-            className="w-8 h-8 grid place-items-center rounded-full hover:bg-[rgba(11,15,20,.06)] active:bg-[rgba(11,15,20,.08)] transition-colors"
+            className="w-8 h-8 grid place-items-center rounded-full hover:bg-[var(--bg-secondary)] active:bg-[var(--bg-tertiary)] transition-colors"
             onClick={() => {
               const d = new Date(base);
               d.setMonth(month - 1);
@@ -206,7 +206,7 @@ function MiniCalendar({ selected, onSelect }: { selected: string; onSelect: (v: 
             <Icon name="chevron_left" size={16} />
           </button>
           <button
-            className="w-8 h-8 grid place-items-center rounded-full hover:bg-[rgba(11,15,20,.06)] active:bg-[rgba(11,15,20,.08)] transition-colors"
+            className="w-8 h-8 grid place-items-center rounded-full hover:bg-[var(--bg-secondary)] active:bg-[var(--bg-tertiary)] transition-colors"
             onClick={() => {
               const d = new Date(base);
               d.setMonth(month + 1);
@@ -218,7 +218,7 @@ function MiniCalendar({ selected, onSelect }: { selected: string; onSelect: (v: 
           </button>
         </div>
       </div>
-      <div className="grid grid-cols-7 gap-1 text-[11px] text-[rgba(11,15,20,.66)] mb-1">
+      <div className="grid grid-cols-7 gap-1 text-[11px] text-[var(--text-secondary)] mb-1">
         {["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"].map((w) => (
           <div key={w} className="text-center">
             {w}
@@ -299,7 +299,7 @@ function SegmentedView({ value, onChange }: { value: CalendarView; onChange: (v:
       role="tablist"
       aria-label="Вид"
       onKeyDown={onKeyDown}
-      className="relative inline-flex items-center rounded-full bg-[rgba(11,15,20,.06)] p-1 h-9"
+      className="relative inline-flex items-center rounded-full bg-[var(--bg-secondary)] p-1 h-9"
     >
       <span
         aria-hidden
@@ -318,7 +318,7 @@ function SegmentedView({ value, onChange }: { value: CalendarView; onChange: (v:
           onClick={() => onChange(it.key as CalendarView)}
           className={
             "relative z-[1] h-8 px-3 rounded-full text-[14px] font-medium whitespace-nowrap transition-colors " +
-            (value === it.key ? "text-white" : "text-[rgba(11,15,20,.66)] hover:text-[rgba(11,15,20,.9)]")
+            (value === it.key ? "text-white" : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]")
           }
         >
           {it.label}
@@ -353,9 +353,9 @@ function SearchSheet({ open, onClose }: { open: boolean; onClose: () => void }) 
 
   return (
     <div className={`fixed inset-0 z-[100] ${open ? "pointer-events-auto" : "pointer-events-none"}`} aria-hidden={!open}>
-      <div className={`absolute inset-0 bg-black/40 transition-opacity ${open ? "opacity-100" : "opacity-0"}`} onClick={onClose} />
+      <div className={`absolute inset-0 bg-black/20 backdrop-blur-sm transition-opacity duration-200 ease-out ${open ? "opacity-100" : "opacity-0"}`} onClick={onClose} />
       <div
-        className={`absolute inset-x-0 bottom-0 top-0 bg-white shadow-2xl transition-transform duration-300 ease-out ${
+        className={`absolute inset-x-0 bottom-0 top-0 bg-white shadow-2xl transition-transform duration-200 ease-out ${
           open ? "translate-y-0" : "translate-y-full"
         }`}
         role="dialog"
@@ -363,7 +363,7 @@ function SearchSheet({ open, onClose }: { open: boolean; onClose: () => void }) 
       >
         <button
           onClick={onClose}
-          className="absolute right-5 top-5 w-10 h-10 rounded-full hover:bg-[rgba(0,0,0,.06)] grid place-items-center"
+          className="absolute right-5 top-5 w-10 h-10 rounded-full hover:bg-[var(--bg-secondary)] grid place-items-center"
           aria-label="Закрыть"
         >
           <Icon name="close" size={20} />
@@ -375,9 +375,9 @@ function SearchSheet({ open, onClose }: { open: boolean; onClose: () => void }) 
               value={q}
               onChange={(e) => setQ(e.target.value)}
               placeholder="Что вы ищете?"
-              className="w-full text-5xl font-light outline-none border-b border-[rgba(0,0,0,.12)] pb-3 placeholder:opacity-50"
+              className="w-full text-5xl font-light outline-none border-b border-[var(--border-strong)] pb-3 placeholder:opacity-50"
             />
-            <div className="text-[14px] text-[rgba(11,15,20,.60)] mt-2">Поиск по имени клиента, телефону, e‑mail или номеру брони</div>
+            <div className="text-[14px] text-[var(--text-secondary)] mt-2">Поиск по имени клиента, телефону, e‑mail или номеру брони</div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             <div>
@@ -386,15 +386,15 @@ function SearchSheet({ open, onClose }: { open: boolean; onClose: () => void }) 
             </div>
             <div>
               <div className="h3 mb-2">Клиенты (недавно добавленные)</div>
-              <div className="divide-y" style={{ borderColor: "rgba(0,0,0,.08)" }}>
+              <div className="divide-y" style={{ borderColor: "var(--border-medium)" }}>
                 {recent.map((r) => (
-                  <button key={r.id} className="w-full flex items-center gap-3 py-3 hover:bg-[rgba(0,0,0,.03)] rounded px-1 text-left">
+                  <button key={r.id} className="w-full flex items-center gap-3 py-3 hover:bg-[var(--bg-secondary)] rounded px-1 text-left">
                     <div className="w-10 h-10 rounded-full bg-[var(--accent)]/10 text-[var(--accent)] grid place-items-center">
                       <Icon name="clients" size={18} />
                     </div>
                     <div className="min-w-0">
                       <div className="truncate">{r.title}</div>
-                      <div className="text-[12px] text-[rgba(11,15,20,.60)] truncate">{r.subtitle}</div>
+                      <div className="text-[12px] text-[var(--text-secondary)] truncate">{r.subtitle}</div>
                     </div>
                   </button>
                 ))}
@@ -421,7 +421,7 @@ function SupportSheet({ open, onClose }: { open: boolean; onClose: () => void })
       {tab === "chat" && (
         <div className="space-y-6">
           <h2 className="h2">Чат с клиентами</h2>
-          <div className="rounded-xl border p-4 bg-gradient-to-b from-[rgba(0,0,0,.03)] to-white" style={{ borderColor: "rgba(0,0,0,.08)" }}>
+          <div className="rounded-xl border p-4 bg-gradient-to-b from-[rgba(0,0,0,.03)] to-white" style={{ borderColor: "var(--border-medium)" }}>
             <div className="mb-3 font-medium">В журнале и окне визита</div>
             <ul className="space-y-2 text-[14px]">
               {[
@@ -442,7 +442,7 @@ function SupportSheet({ open, onClose }: { open: boolean; onClose: () => void })
           </div>
           <div>
             <div className="h3 mb-2">Недавние сообщения</div>
-            <div className="divide-y rounded-xl border" style={{ borderColor: "rgba(0,0,0,.08)" }}>
+            <div className="divide-y rounded-xl border" style={{ borderColor: "var(--border-medium)" }}>
               {[
                 { id: "m1", from: "Анна", channel: "Telegram", text: "Здравствуйте! Есть места на завтра?", time: "12:00" },
                 { id: "m2", from: "Олег", channel: "Web", text: "Хочу перенести запись", time: "10:42" },
@@ -456,9 +456,9 @@ function SupportSheet({ open, onClose }: { open: boolean; onClose: () => void })
                       <div className="truncate">
                         <span className="font-medium">{m.from}</span> · {m.channel}
                       </div>
-                      <div className="text-[12px] text-[rgba(11,15,20,.60)]">{m.time}</div>
+                      <div className="text-[12px] text-[var(--text-secondary)]">{m.time}</div>
                     </div>
-                    <div className="text-[14px] text-[rgba(11,15,20,.70)] truncate">{m.text}</div>
+                    <div className="text-[14px] text-[var(--text-secondary)] truncate">{m.text}</div>
                   </div>
                 </div>
               ))}
@@ -470,14 +470,14 @@ function SupportSheet({ open, onClose }: { open: boolean; onClose: () => void })
       {tab === "help" && (
         <div className="space-y-4">
           <h2 className="h2">Поддержка</h2>
-          <p className="text-[14px] text-[rgba(11,15,20,.70)]">Мы рядом — задайте вопрос и команда ответит прямо здесь.</p>
+          <p className="text-[14px] text-[var(--text-secondary)]">Мы рядом — задайте вопрос и команда ответит прямо здесь.</p>
         </div>
       )}
 
       {tab === "news" && (
         <div className="space-y-4">
           <h2 className="h2">Новости</h2>
-          <p className="text-[14px] text-[rgba(11,15,20,.70)]">Обновления платформы, новые фичи и улучшения.</p>
+          <p className="text-[14px] text-[var(--text-secondary)]">Обновления платформы, новые фичи и улучшения.</p>
         </div>
       )}
     </SidePanel>
@@ -491,7 +491,7 @@ function PageStub() {
         {Array.from({ length: 6 }).map((_, i) => (
           <div
             key={i}
-            className="rounded-[12px] border p-4 bg-white hover:shadow transition-shadow"
+            className="rounded-[var(--radius-md)] border p-4 bg-white hover:shadow transition-shadow"
             style={{ borderColor: "rgba(0,0,0,.06)" }}
           >
             <div className="h-6 w-32 bg-[rgba(0,0,0,.06)] rounded mb-3" />
@@ -633,7 +633,7 @@ function Sidebar({ expanded, setExpanded }: { expanded: boolean; setExpanded: (v
           </div>
           <button
             onClick={() => setExpanded(!expanded)}
-            className={expanded ? "w-10 h-10 grid place-items-center rounded-full hover:bg-[rgba(11,15,20,.06)] active:bg-[rgba(11,15,20,.08)] transition-colors" : "hidden"}
+            className={expanded ? "w-10 h-10 grid place-items-center rounded-full hover:bg-[var(--bg-secondary)] active:bg-[var(--bg-tertiary)] transition-colors" : "hidden"}
             title={expanded ? "Свернуть" : "Развернуть"}
           >
             <Icon name={expanded ? "chevron_left" : "chevron_right"} size={ICON.base} />
@@ -690,7 +690,7 @@ function Sidebar({ expanded, setExpanded }: { expanded: boolean; setExpanded: (v
               <div key={s.key} ref={setRowRef(s.key)} className="relative group z-[1]">
                 <Link
                   to={s.path}
-                  className={`w-full flex items-center ${expanded ? "gap-3" : "gap-0"} px-3 ${expanded ? "h-10" : "h-12"} text-[14px]`}
+                  className={`w-full flex items-center ${expanded ? "gap-3" : "gap-0"} px-4 ${expanded ? "h-12" : "h-14"} text-[15px] font-medium transition-colors duration-200`}
                   onMouseEnter={(e) => {
                     setHoverEl(e.currentTarget as any);
                     setHoverText(s.label);
@@ -748,12 +748,12 @@ function NotificationPanel({ open, onClose }: { open: boolean; onClose: () => vo
         <div className="h2">{tabs.find((x: any) => x.key === tab)?.label}</div>
       </div>
 
-      <div className="rounded-2xl border p-10 text-center" style={{ borderColor: "rgba(0,0,0,.08)" }}>
+      <div className="rounded-2xl border p-10 text-center" style={{ borderColor: "var(--border-medium)" }}>
         <div className="mx-auto w-12 h-12 rounded-xl bg-[rgba(0,0,0,.05)] grid place-items-center mb-3">
           <Icon name="search" size={22} />
         </div>
         <div className="text-lg font-medium">Нет уведомлений</div>
-        <div className="text-[13px] text-[rgba(11,15,20,.60)] mt-1">У вас пока нет уведомлений.</div>
+        <div className="text-[13px] text-[var(--text-secondary)] mt-1">У вас пока нет уведомлений.</div>
       </div>
     </SidePanel>
   );
@@ -790,7 +790,7 @@ function Topbar() {
       <header className="sticky top-0 z-50 bg-white/80 backdrop-blur border-b">
         <div className="h-14 px-4 flex items-center justify-between gap-3">
           <div className="flex items-center gap-3 min-w-0">
-            <nav className="text-[13px] text-[rgba(11,15,20,.60)] whitespace-nowrap flex items-center">
+            <nav className="text-[13px] text-[var(--text-secondary)] whitespace-nowrap flex items-center">
               <span className="font-medium text-[rgb(11,15,20)]">{section.label}</span>
             </nav>
           </div>
@@ -847,7 +847,7 @@ function TeamDropdown() {
       <button
         ref={btnRef}
         onClick={() => setOpen((v) => !v)}
-        className="h-9 px-3 rounded-full bg-white border border-[rgba(0,0,0,.10)] hover:bg-[rgba(11,15,20,.03)] active:bg-[rgba(11,15,20,.06)] transition-colors text-[14px] font-medium flex items-center gap-2"
+        className="h-9 px-3 rounded-full bg-white border border-[var(--border-strong)] hover:bg-[var(--bg-secondary)] active:bg-[var(--bg-secondary)] transition-colors text-[14px] font-medium flex items-center gap-2"
       >
         <span>{label}</span>
         <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
@@ -860,7 +860,7 @@ function TeamDropdown() {
         className={`absolute left-0 top-full mt-2 w-[280px] rounded-2xl border bg-white shadow-xl transition-opacity duration-150 ${
           open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
-        style={{ borderColor: "rgba(0,0,0,.08)" }}
+        style={{ borderColor: "var(--border-medium)" }}
       >
         <div className="py-2">
           {[
@@ -870,13 +870,13 @@ function TeamDropdown() {
             <button
               key={it.key}
               onClick={() => setMode(it.key as any)}
-              className={`w-full text-left px-3 py-2.5 flex items-center gap-2 hover:bg-[rgba(11,15,20,.03)] ${mode === it.key ? "bg-[rgba(11,15,20,.04)]" : ""}`}
+              className={`w-full text-left px-3 py-2.5 flex items-center gap-2 hover:bg-[var(--bg-secondary)] ${mode === it.key ? "bg-[var(--bg-secondary)]" : ""}`}
             >
               <Icon name="team" size={18} />
               <span className="text-[14px]">{it.label}</span>
             </button>
           ))}
-          <div className="my-2 mx-3 border-t" style={{ borderColor: "rgba(0,0,0,.08)" }} />
+          <div className="my-2 mx-3 border-t" style={{ borderColor: "var(--border-medium)" }} />
           <div className="px-3 pb-2 text-[13px] font-medium flex items-center justify-between">
             <span>Члены команды</span>
             <button
@@ -912,7 +912,7 @@ function FiltersPanel({ open, onClose }: { open: boolean; onClose: () => void })
     <SidePanel open={open} onClose={onClose} tabs={tabs} active={"all"} onChange={() => {}}>
       <div className="flex items-center justify-between mb-6">
         <div className="h2">Все фильтры</div>
-        <button className="h-9 px-3 rounded-full bg:white border border-[rgba(0,0,0,.10)] text-[14px] font-medium inline-flex items-center gap-1">
+        <button className="h-9 px-3 rounded-full bg:white border border-[var(--border-strong)] text-[14px] font-medium inline-flex items-center gap-1">
           <span>Сохраненные фильтры</span>
           <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
   <path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
@@ -920,7 +920,7 @@ function FiltersPanel({ open, onClose }: { open: boolean; onClose: () => void })
         </button>
       </div>
 
-      <div className="divide-y rounded-xl border mb-8" style={{ borderColor: "rgba(0,0,0,.08)" }}>
+      <div className="divide-y rounded-xl border mb-8" style={{ borderColor: "var(--border-medium)" }}>
         {[
           { icon: "calendar_month", label: "Статус назначения" },
           { icon: "grade", label: "Тип" },
@@ -930,9 +930,9 @@ function FiltersPanel({ open, onClose }: { open: boolean; onClose: () => void })
           { icon: "calendar_month", label: "Дата создания записи" },
           { icon: "team", label: "Запрошенный участник команды" },
         ].map((it: any, idx: number) => (
-          <div key={idx} className="flex items-center justify-between p-4 hover:bg-[rgba(11,15,20,.02)]">
+          <div key={idx} className="flex items-center justify-between p-4 hover:bg-[var(--bg-secondary)]">
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-full grid place-items-center bg-[rgba(11,15,20,.04)]">
+              <div className="w-8 h-8 rounded-full grid place-items-center bg-[var(--bg-secondary)]">
                 <Icon name={it.icon as any} size={18} />
               </div>
               <div className="text-[15px]">{it.label}</div>
@@ -946,10 +946,10 @@ function FiltersPanel({ open, onClose }: { open: boolean; onClose: () => void })
       </div>
 
       <div className="flex items-center justify-between">
-        <button className="h-10 px-4 rounded-full border border-[rgba(0,0,0,.10)] bg-white">Очистить фил...</button>
+        <button className="h-10 px-4 rounded-full border border-[var(--border-strong)] bg-white">Очистить фил...</button>
         <div className="flex items-center gap-3">
-          <button className="h-10 w-10 rounded-full border border-[rgba(0,0,0,.10)] bg-white grid place-items-center">⋯</button>
-          <button className="h-10 px-5 rounded-full bg-black text-white hover:brightness-95">Применить</button>
+          <button className="h-10 w-10 rounded-full border border-[var(--border-strong)] bg-white grid place-items-center">⋯</button>
+          <button className="h-10 px-5 rounded-full bg-[var(--accent)] text-white hover:brightness-95">Применить</button>
         </div>
       </div>
     </SidePanel>
@@ -979,7 +979,7 @@ function AddMenuButton(){
       <button
         ref={btnRef}
         onClick={()=>setOpen(v=>!v)}
-        className="h-9 px-4 rounded-full bg-[rgb(45,45,47)] text-white text-[14px] font-medium inline-flex items-center gap-2 shadow-sm hover:brightness-105 active:brightness-95"
+        className="h-9 px-4 rounded-full bg-[var(--accent)] text-white text-[14px] font-medium inline-flex items-center gap-2 shadow-sm hover:brightness-105 active:brightness-95"
       >
         <span>Добавить</span>
         <svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true">
@@ -1000,9 +1000,9 @@ function AddMenuButton(){
             {id:'sales', icon: 'tag', label:'Продажи'},
             {id:'quickpay', icon: 'card', label:'Быстрая оплата'},
           ].map((it)=>(
-            <button key={it.id} className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-[rgba(11,15,20,.04)] text-left">
+            <button key={it.id} className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-[var(--bg-secondary)] text-left">
               {/* icons as inline svgs for reliability */}
-              <span className="w-8 h-8 rounded-full grid place-items-center bg-[rgba(11,15,20,.05)]">
+              <span className="w-8 h-8 rounded-full grid place-items-center bg-[var(--bg-secondary)]">
                 {it.icon==='calendar' && (
                   <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M7 2v3M17 2v3M4 9h16M5 5h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"/>
@@ -1055,7 +1055,7 @@ function CalendarSettingsPanel({open,onClose}:{open:boolean; onClose:()=>void}){
         <div>
           <div className="flex items-center justify-between mb-2">
             <div className="font-medium">Изменение масштаба календаря</div>
-            <div className="text-[13px] text-[rgba(11,15,20,.60)]">{scale >= 66 ? 'Большой' : scale >= 33 ? 'Средний' : 'Маленький'}</div>
+            <div className="text-[13px] text-[var(--text-secondary)]">{scale >= 66 ? 'Большой' : scale >= 33 ? 'Средний' : 'Маленький'}</div>
           </div>
           <input
             type="range"
@@ -1081,13 +1081,13 @@ function CalendarSettingsPanel({open,onClose}:{open:boolean; onClose:()=>void}){
             </span>
             <span>
               <div className="font-medium">Показывать быстрые действия в календаре</div>
-              <div className="text-[13px] text-[rgba(11,15,20,.60)]">Быстро добавляйте встречи или блокируйте время, нажимая на ячейку календаря</div>
+              <div className="text-[13px] text-[var(--text-secondary)]">Быстро добавляйте встречи или блокируйте время, нажимая на ячейку календаря</div>
             </span>
           </label>
         </div>
 
         <div className="sticky bottom-0 bg-white border-t pt-4 pb-3" style={{borderColor:'rgba(0,0,0,.08)'}}>
-          <button onClick={onClose} className="w-full h-12 rounded-full bg-black text-white hover:brightness-95">Применить изменения</button>
+          <button onClick={onClose} className="w-full h-12 rounded-full bg-[var(--accent)] text-white hover:brightness-95">Применить изменения</button>
         </div>
       </div>
     </SidePanel>
@@ -1103,15 +1103,15 @@ function WaitlistPanel({open,onClose}:{open:boolean; onClose:()=>void}){
         <div className="flex items-center justify-between mb-4">
           <h2 className="h2">Список ожидания</h2>
           <div className="flex items-center gap-2">
-            <button className="h-9 w-9 rounded-full border border-[rgba(0,0,0,.10)] bg-white grid place-items-center">⋯</button>
-            <button className="h-9 px-4 rounded-full bg-black text-white hover:brightness-95">Добавить</button>
+            <button className="h-9 w-9 rounded-full border border-[var(--border-strong)] bg-white grid place-items-center">⋯</button>
+            <button className="h-9 px-4 rounded-full bg-[var(--accent)] text-white hover:brightness-95">Добавить</button>
           </div>
         </div>
 
         <div className="flex flex-wrap items-center gap-2 mb-4">
-          <button className="h-9 px-3 rounded-full bg-white border border-[rgba(0,0,0,.10)] text-[14px]">Все предстоя…</button>
-          <button className="h-9 px-3 rounded-full bg-white border border-[rgba(0,0,0,.10)] text-[14px]">Создано (от старых к н…)</button>
-          <button className="h-9 w-9 rounded-full border border-[rgba(0,0,0,.10)] bg-white grid place-items-center">
+          <button className="h-9 px-3 rounded-full bg-white border border-[var(--border-strong)] text-[14px]">Все предстоя…</button>
+          <button className="h-9 px-3 rounded-full bg-white border border-[var(--border-strong)] text-[14px]">Создано (от старых к н…)</button>
+          <button className="h-9 w-9 rounded-full border border-[var(--border-strong)] bg-white grid place-items-center">
             <svg width="16" height="16" viewBox="0 0 24 24"><path d="M3 6h18M6 12h12M10 18h4" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round"/></svg>
           </button>
         </div>
@@ -1121,7 +1121,7 @@ function WaitlistPanel({open,onClose}:{open:boolean; onClose:()=>void}){
             const k = i===0?'queue':i===1?'expired':'booked';
             const active = (k as any)===tab;
             return (
-              <button key={k} onClick={()=>setTab(k as any)} className={"px-3 py-2 text-[14px] mr-2 " + (active ? "border-b-2 border-black font-medium" : "text-[rgba(11,15,20,.66)]")}>
+              <button key={k} onClick={()=>setTab(k as any)} className={"px-3 py-2 text-[14px] mr-2 " + (active ? "border-b-2 border-black font-medium" : "text-[var(--text-secondary)]")}>
                 {t} <span className="opacity-60">0</span>
               </button>
             );
@@ -1133,7 +1133,7 @@ function WaitlistPanel({open,onClose}:{open:boolean; onClose:()=>void}){
             <svg width="22" height="22" viewBox="0 0 24 24"><path d="M7 2v3M17 2v3M4 9h16M5 5h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"/></svg>
           </div>
           <div className="text-lg font-medium">Нет записей в списке ожидания</div>
-          <div className="text-[13px] text-[rgba(11,15,20,.60)] mt-1">У вас нет клиентов в списке ожидания</div>
+          <div className="text-[13px] text-[var(--text-secondary)] mt-1">У вас нет клиентов в списке ожидания</div>
         </div>
       </div>
     </SidePanel>
@@ -1169,7 +1169,7 @@ function StickySubheader() {
           <div className="inline-flex items-center gap-2">
             <button
               type="button"
-              className="h-9 px-3 rounded-full text-[14px] font-medium bg-white border border-[rgba(0,0,0,.10)] hover:bg-[rgba(11,15,20,.03)] active:bg-[rgba(11,15,20,.06)] transition-colors"
+              className="h-9 px-3 rounded-full text-[14px] font-medium bg-white border border-[var(--border-strong)] hover:bg-[var(--bg-secondary)] active:bg-[var(--bg-secondary)] transition-colors"
               onClick={() => setDate(new Date().toISOString().slice(0, 10))}
               title={STR.today_title}
             >
@@ -1180,13 +1180,13 @@ function StickySubheader() {
               <button
                 type="button"
                 aria-label={STR.prev_day}
-                className="w-9 h-9 grid place-items-center rounded-full border border-[rgba(0,0,0,.10)] bg-white hover:bg-[rgba(11,15,20,.03)] active:bg-[rgba(11,15,20,.06)] transition-colors"
+                className="w-9 h-9 grid place-items-center rounded-full border border-[var(--border-strong)] bg-white hover:bg-[var(--bg-secondary)] active:bg-[var(--bg-secondary)] transition-colors"
                 onClick={() => shiftDate(-1)}
               >
                 <Icon name="chevron_left" size={ICON.arrow} />
               </button>
 
-              <div className="min-w-[88px] text-[13px] font-medium text-[rgba(11,15,20,.66)] text-center select-none">
+              <div className="min-w-[88px] text-[13px] font-medium text-[var(--text-secondary)] text-center select-none">
                 {(() => {
                   const d = new Date(date + "T00:00:00");
                   const wd = d.toLocaleDateString("ru-RU", { weekday: "short" }).replace(".", "");
@@ -1200,7 +1200,7 @@ function StickySubheader() {
               <button
                 type="button"
                 aria-label={STR.next_day}
-                className="w-9 h-9 grid place-items-center rounded-full border border-[rgba(0,0,0,.10)] bg-white hover:bg-[rgba(11,15,20,.03)] active:bg-[rgba(11,15,20,.06)] transition-colors"
+                className="w-9 h-9 grid place-items-center rounded-full border border-[var(--border-strong)] bg-white hover:bg-[var(--bg-secondary)] active:bg-[var(--bg-secondary)] transition-colors"
                 onClick={() => shiftDate(1)}
               >
                 <Icon name="chevron_right" size={ICON.arrow} />
@@ -1209,7 +1209,7 @@ function StickySubheader() {
             <TeamDropdown />
             <button
               type="button"
-              className="h-8 px-4 grid place-items-center rounded-full border border-[rgba(0,0,0,.12)] bg-white hover:bg-[rgba(11,15,20,.03)] active:bg-[rgba(11,15,20,.06)] transition-colors"
+              className="h-8 px-4 grid place-items-center rounded-full border border-[var(--border-strong)] bg-white hover:bg-[var(--bg-secondary)] active:bg-[var(--bg-secondary)] transition-colors"
               aria-label="Фильтры"
               onMouseEnter={(e)=>{ setTipEl(e.currentTarget as any); setTipText('Фильтры'); }}
               onMouseLeave={()=>setTipEl(null)}
@@ -1230,7 +1230,7 @@ function StickySubheader() {
               onMouseEnter={(e)=>{ setTipEl(e.currentTarget as any); setTipText('Настройки календаря'); }}
               onMouseLeave={()=>setTipEl(null)}
               onClick={()=>setCalSettingsOpen(true)}
-              className="h-8 px-4 grid place-items-center rounded-full border border-[rgba(0,0,0,.12)] bg-white hover:bg-[rgba(11,15,20,.03)] active:bg-[rgba(11,15,20,.06)] transition-colors"
+              className="h-8 px-4 grid place-items-center rounded-full border border-[var(--border-strong)] bg-white hover:bg-[var(--bg-secondary)] active:bg-[var(--bg-secondary)] transition-colors"
               aria-label="Настройки календаря"
             >
               <Icon name="settings" size={18} stroke={1.7} className="[&_path]:vector-effect-non-scaling-stroke [shape-rendering:geometricPrecision]" aria-hidden="true" />
@@ -1240,7 +1240,7 @@ function StickySubheader() {
               onMouseEnter={(e)=>{ setTipEl(e.currentTarget as any); setTipText('Список ожидания'); }}
               onMouseLeave={()=>setTipEl(null)}
               onClick={()=>setWaitlistOpen(true)}
-              className="h-8 px-4 grid place-items-center rounded-full border border-[rgba(0,0,0,.12)] bg-white hover:bg-[rgba(11,15,20,.03)] active:bg-[rgba(11,15,20,.06)] transition-colors"
+              className="h-8 px-4 grid place-items-center rounded-full border border-[var(--border-strong)] bg-white hover:bg-[var(--bg-secondary)] active:bg-[var(--bg-secondary)] transition-colors"
               aria-label="Список ожидания"
             >
               <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" className="[&_path]:vector-effect-non-scaling-stroke [shape-rendering:geometricPrecision]">

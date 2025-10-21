@@ -1,11 +1,11 @@
 import React from 'react';
 import {
-  Home, Calendar, Wallet, Users, Scissors, Ticket,
-  Megaphone, BadgeCheck, TrendingUp, Puzzle, Settings,
+  Home, Calendar, ShoppingBag, Users, Scissors, Globe,
+  Megaphone, UsersRound, TrendingUp, Package, Settings,
   Search, HelpCircle, Bell, MessageCircle, Newspaper,
   CheckCircle, Mail, ExternalLink,
   ChevronLeft, ChevronRight, User, X, ChevronUp, ChevronDown,
-  Zap, Tag, Star, CalendarDays, ShoppingBag
+  Zap, Tag, Star, CalendarDays, DollarSign
 } from 'lucide-react';
 
 export type IconName =
@@ -18,21 +18,21 @@ export type IconName =
 const map: Record<IconName, React.ComponentType<any>> = {
   home: Home,
   work: Calendar,
-  sales: Wallet,
+  sales: ShoppingBag,
   clients: Users,
   catalog: Scissors,
-  online: Ticket,
+  online: Globe,
   marketing: Megaphone,
-  team: BadgeCheck,
+  team: UsersRound,
   reports: TrendingUp,
-  addons: Puzzle,
+  addons: Package,
   settings: Settings,
   search: Search,
   help: HelpCircle,
   notifications: Bell,
   calendar_month: CalendarDays,
   grade: Star,
-  sell: ShoppingBag,
+  sell: DollarSign,
   tag: Tag,
   bolt: Zap,
   chat: MessageCircle,

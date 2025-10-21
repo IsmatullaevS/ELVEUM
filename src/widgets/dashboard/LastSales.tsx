@@ -122,15 +122,8 @@ const Chart: React.FC<{data:Point[]; w?:number; h?:number}> = ({data, w=620, h=2
   const labelStep = data.length > 20 ? 3 : data.length > 12 ? 2 : 1;
 
   const path = (key:'a'|'b', color:string) => {
-    if (data.length < 2) return null;
-    let d = `M ${xs(0)} ${ys(data[0][key])}`;
-    for (let i = 1; i < data.length; i++) {
-      const x0 = xs(i - 1), y0 = ys(data[i - 1][key]);
-      const x1 = xs(i), y1 = ys(data[i][key]);
-      const cpx = x0 + (x1 - x0) * 0.5;
-      d += ` C ${cpx} ${y0}, ${cpx} ${y1}, ${x1} ${y1}`;
-    }
-    return <path d={d} fill="none" stroke={color} strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />;
+    const d = data.map((pt,i)=> `${i?'L':'M'} ${xs(i)} ${ys(pt[key])}`).join(' ');
+    return <path d={d} fill="none" stroke={color} strokeWidth={2} strokeLinecap="round" />;
   };
 
   return (
@@ -145,12 +138,12 @@ const Chart: React.FC<{data:Point[]; w?:number; h?:number}> = ({data, w=620, h=2
             </g>
           );
         })}
-        {path('a','var(--accent)')}
-        {path('b','var(--success)')}
+        {path('a','var(--apple-indigo)')}
+        {path('b','var(--apple-green)')}
         {data.map((p,i)=>(
           <g key={i}>
-            <circle cx={xs(i)} cy={ys(p.a)} r={3} fill="var(--accent)" />
-            <circle cx={xs(i)} cy={ys(p.b)} r={3} fill="var(--success)" />
+            <circle cx={xs(i)} cy={ys(p.a)} r={3} fill="var(--apple-indigo)" />
+            <circle cx={xs(i)} cy={ys(p.b)} r={3} fill="var(--apple-green)" />
           </g>
         ))}
         {data.map((p,i)=>{
@@ -165,10 +158,10 @@ const Chart: React.FC<{data:Point[]; w?:number; h?:number}> = ({data, w=620, h=2
           <div className="card" style={{padding:"8px 12px"}}>
             <div className="font-medium" style={{fontSize:13}}>{data[hover!].labelFull ?? data[hover!].label}</div>
             <div className="small" style={{display:"flex",gap:8,alignItems:"center"}}>
-              <span style={{width:10,height:10,borderRadius:999,background:"var(--accent)",display:"inline-block"}}/> Продажи <span className="mono">{fmt(data[hover!].a)} UZS</span>
+              <span style={{width:10,height:10,borderRadius:999,background:"var(--apple-indigo)",display:"inline-block"}}/> Продажи <span className="mono">{fmt(data[hover!].a)} UZS</span>
             </div>
             <div className="small" style={{display:"flex",gap:8,alignItems:"center"}}>
-              <span style={{width:10,height:10,borderRadius:999,background:"var(--success)",display:"inline-block"}}/> Визиты <span className="mono">{fmt(data[hover!].b)} UZS</span>
+              <span style={{width:10,height:10,borderRadius:999,background:"var(--apple-green)",display:"inline-block"}}/> Визиты <span className="mono">{fmt(data[hover!].b)} UZS</span>
             </div>
           </div>
         </div>
@@ -263,10 +256,10 @@ const LastSales: React.FC = () => {
         </div>
         <div className="small" style={{display:'flex', gap:24, marginTop:8}}>
           <span style={{display:'inline-flex',alignItems:'center', gap:8}}>
-            <i style={{width:10,height:10,borderRadius:999,background:"var(--accent)",display:'inline-block'}}/> Продажи
+            <i style={{width:10,height:10,borderRadius:999,background:"var(--apple-indigo)",display:'inline-block'}}/> Продажи
           </span>
           <span style={{display:'inline-flex',alignItems:'center', gap:8}}>
-            <i style={{width:10,height:10,borderRadius:999,background:"var(--success)",display:'inline-block'}}/> Визиты
+            <i style={{width:10,height:10,borderRadius:999,background:"var(--apple-green)",display:'inline-block'}}/> Визиты
           </span>
         </div>
       </div>

@@ -1,8 +1,5 @@
 import React from "react";
-import LastSales from "@/widgets/dashboard/LastSales";
-import UpcomingVisits from "@/widgets/dashboard/UpcomingVisits";
-import PopularServicesTable from "@/widgets/dashboard/PopularServicesTable";
-import TopEmployee from "@/widgets/dashboard/TopEmployee";
+import { LastSales, UpcomingVisits, PopularServicesTable, TopEmployee } from "@/widgets/dashboard";
 import { VisitsCard, NextVisitsEmptyCard } from "@/widgets/visits-card";
 
 const HomePage: React.FC = () => {

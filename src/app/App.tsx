@@ -1,5 +1,5 @@
-import CalendarDayPage from "@/pages/CalendarDayPage";
-import HomePage from "@/pages/home/ui/HomePage";
+import { CalendarDayPage } from "@/pages/calendar-day";
+import { HomePage } from "@/pages/home";
 import "@/shared/theme/apple.css";
 import React from "react";
 import { Routes, Route, Link, useLocation, useSearchParams } from "react-router-dom";
@@ -215,22 +215,7 @@ function MiniCalendar({ selected, onSelect }: { selected: string; onSelect: (v: 
             aria-label="Следующий месяц"
           >
             <Icon name="chevron_right" size={16} />
-          </button><div className="flex items-center gap-2 ml-2">
-<TeamDropdown />
-            <button
-              type="button"
-              onClick={() => setFiltersOpen(true)}
-              className="h-8 px-4 grid place-items-center rounded-full border border-[rgba(0,0,0,.12)] bg-white hover:bg-[rgba(11,15,20,.03)] active:bg-[rgba(11,15,20,.06)] transition-colors"
-              aria-label="Фильтры"
-              onMouseEnter={(e)=>{ setTipEl(e.currentTarget as any); setTipText('Фильтры'); }}
-              onMouseLeave={()=>setTipEl(null)}
-              onClick={()=>setFiltersOpen(true)}
-            >
-              <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" className="[&_path]:vector-effect-non-scaling-stroke [shape-rendering:geometricPrecision]">
-  <path d="M3 6h18M6 12h12M10 18h4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-            </button>
-          </div>
+          </button>
         </div>
       </div>
       <div className="grid grid-cols-7 gap-1 text-[11px] text-[rgba(11,15,20,.66)] mb-1">
@@ -1110,7 +1095,7 @@ function CalendarSettingsPanel({open,onClose}:{open:boolean; onClose:()=>void}){
 }
 
 function WaitlistPanel({open,onClose}:{open:boolean; onClose:()=>void}){
-  const tabs = [{key:'main',label:'Список ожидания',icon:'calendar'}] as const;
+  const tabs = [{key:'main',label:'Список ожидания',icon:'calendar_month'}] as const;
   const [tab,setTab] = React.useState<'queue'|'expired'|'booked'>('queue');
   return (
     <SidePanel open={open} onClose={onClose} tabs={tabs} active={'main'} onChange={()=>{}}>

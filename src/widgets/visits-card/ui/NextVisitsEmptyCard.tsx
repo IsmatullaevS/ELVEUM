@@ -1,5 +1,5 @@
 import React from "react";
-import { IconCalendar } from "@tabler/icons-react";
+import { Calendar } from "lucide-react";
 type Props = {
   title?: string;
   linkHref?: string;
@@ -29,7 +29,7 @@ export const NextVisitsEmptyCard: React.FC<Props> = ({
       <style dangerouslySetInnerHTML={{__html: scoped}} />
       <div className="card-header">{title}</div>
       <div className="card-content ve-content">
-        <IconCalendar className="ve-icon" size={56} stroke={1.25} />
+        <Calendar className="ve-icon" size={56} strokeWidth={1.25} />
         
         <div className="ve-lead">На сегодня визиты не запланированы</div>
         <p className="small">Перейдите в раздел <a className="ve-link" href={linkHref}>{linkText}</a>, чтобы добавить записи</p>

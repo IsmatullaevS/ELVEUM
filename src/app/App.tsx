@@ -8,6 +8,10 @@ import { Icon } from "@/shared/ui/Icon";
 import { SidePanel } from "@/shared/ui/SidePanel";
 import { IconButton } from "@/shared/ui/IconButton";
 import { UserMenu } from "@/features/user-menu";
+import { useAppStore } from "@/shared/store/useAppStore";
+import { initializeMockData } from "@/shared/data/mockData";
+import { SimpleModePage } from "@/pages/SimpleModePage";
+import { UIModeSwitch } from "@/features/ui-mode-switch/ui/UIModeSwitch";
 
 const STR = {
   brand: "ELVEUM",
@@ -810,6 +814,7 @@ function Topbar() {
             <IconButton name="search" label="Поиск" onClick={() => setSearchOpen(true)} />
             <IconButton name="help" label={STR.support} onClick={() => setSupportOpen(true)} />
             <IconButton name="notifications" label={STR.notifications} onClick={() => setNotifOpen(true)} />
+            <UIModeSwitch />
             <UserMenu fullName="Akmal Muhtorov" />
           </div>
         </div>
@@ -1291,6 +1296,24 @@ function Layout() {
   const [expanded, setExpanded] = useLocalStorage<boolean>("elveum:sidebar", true);
   const { scope } = useScope();
   const sections = sectionsFor(scope);
+  const uiMode = useAppStore(state => state.uiMode);
+
+  // Initialize mock data on mount
+  React.useEffect(() => {
+    initializeMockData();
+  }, []);
+
+  // Simple mode view
+  if (uiMode === 'simple') {
+    return (
+      <div className="min-h-screen bg-[var(--bg-secondary)]">
+        <Topbar />
+        <SimpleModePage />
+      </div>
+    );
+  }
+
+  // Full mode view
   return (
     <div className="h-screen w-full overflow-x-hidden bg-[rgb(247,248,250)] text-[rgb(11,15,20)]">
       <div className="flex h-full">

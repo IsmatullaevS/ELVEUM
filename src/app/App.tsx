@@ -55,6 +55,14 @@ function useLocalStorage<T>(key: string, initial: T) {
   return [value, setValue] as const;
 }
 
+// Format a Date as YYYY-MM-DD in local time (no UTC shift)
+function toLocalYmd(d: Date): string {
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${y}-${m}-${day}`;
+}
+
 export type Scope = "my" | "all" | "platform";
 function useScope() {
   const [scope, setScope] = useLocalStorage<Scope>("elveum:scope", "platform");
@@ -62,7 +70,10 @@ function useScope() {
 }
 
 function useSelectedDate() {
-  const [date, setDate] = useLocalStorage<string>("elveum:selectedDate", new Date().toISOString().slice(0, 10));
+  const [date, setDate] = useLocalStorage<string>(
+    "elveum:selectedDate",
+    toLocalYmd(new Date())
+  );
   return { date, setDate } as const;
 }
 
@@ -199,7 +210,7 @@ function MiniCalendar({ selected, onSelect }: { selected: string; onSelect: (v: 
             onClick={() => {
               const d = new Date(base);
               d.setMonth(month - 1);
-              onSelect(d.toISOString().slice(0, 10));
+              onSelect(toLocalYmd(d));
             }}
             aria-label="Предыдущий месяц"
           >
@@ -210,7 +221,7 @@ function MiniCalendar({ selected, onSelect }: { selected: string; onSelect: (v: 
             onClick={() => {
               const d = new Date(base);
               d.setMonth(month + 1);
-              onSelect(d.toISOString().slice(0, 10));
+              onSelect(toLocalYmd(d));
             }}
             aria-label="Следующий месяц"
           >
@@ -233,7 +244,7 @@ function MiniCalendar({ selected, onSelect }: { selected: string; onSelect: (v: 
           return (
             <button
               key={i}
-              onClick={() => onSelect(d.toISOString().slice(0, 10))}
+              onClick={() => onSelect(toLocalYmd(d))}
               className={
                 "h-8 rounded-full text-[12px] flex items-center justify-center " +
                 (isCur ? color(d) : "opacity-40 ") +
@@ -1157,7 +1168,7 @@ function StickySubheader() {
   function shiftDate(deltaDays: number) {
     const d = new Date(date + "T00:00:00");
     d.setDate(d.getDate() + deltaDays);
-    setDate(d.toISOString().slice(0, 10));
+    setDate(toLocalYmd(d));
   }
 
   if (!isDate) return null;
@@ -1170,7 +1181,7 @@ function StickySubheader() {
             <button
               type="button"
               className="h-9 px-3 rounded-full text-[14px] font-medium bg-white border border-[rgba(0,0,0,.10)] hover:bg-[rgba(11,15,20,.03)] active:bg-[rgba(11,15,20,.06)] transition-colors"
-              onClick={() => setDate(new Date().toISOString().slice(0, 10))}
+              onClick={() => setDate(toLocalYmd(new Date()))}
               title={STR.today_title}
             >
               {STR.today}

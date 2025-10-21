@@ -1,15 +1,16 @@
 import { useState } from 'react';
 import { useAppStore } from '@/shared/store/useAppStore';
+import type { AppStore } from '@/shared/store/useAppStore';
 import { Icon, type IconName } from '@/shared/ui/Icon';
 import { cn, formatTime, formatCurrency, getVisitStatusColor, getVisitStatusLabel, getToday } from '@/shared/lib/utils';
-import type { Visit } from '@/shared/types';
+import type { Visit, Client, Service } from '@/shared/types';
 
 export function SimpleModePage() {
-  const selectedDate = useAppStore(state => state.selectedDate);
-  const visits = useAppStore(state => state.visits);
-  const clients = useAppStore(state => state.clients);
-  const services = useAppStore(state => state.services);
-  const updateVisit = useAppStore(state => state.updateVisit);
+  const selectedDate = useAppStore((state: AppStore) => state.selectedDate);
+  const visits = useAppStore((state: AppStore) => state.visits) as Visit[];
+  const clients = useAppStore((state: AppStore) => state.clients) as Client[];
+  const services = useAppStore((state: AppStore) => state.services) as Service[];
+  const updateVisit = useAppStore((state: AppStore) => state.updateVisit);
 
   const todayVisits = visits.filter(v => v.date === selectedDate);
   const upcomingVisits = todayVisits.filter(v => v.status === 'upcoming');

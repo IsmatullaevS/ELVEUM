@@ -49,7 +49,7 @@ interface AppActions {
   reset: () => void;
 }
 
-type AppStore = AppState & AppActions;
+export type AppStore = AppState & AppActions;
 
 const initialState: AppState = {
   user: null,
@@ -67,7 +67,7 @@ const initialState: AppState = {
 };
 
 export const useAppStore = create<AppStore>()(
-  immer((set) => ({
+  immer<AppStore>((set) => ({
     ...initialState,
 
     login: (user) => set((state) => {

@@ -9,6 +9,7 @@ import { SidePanel } from "@/shared/ui/SidePanel";
 import { IconButton } from "@/shared/ui/IconButton";
 import { UserMenu } from "@/features/user-menu";
 import { useAppStore } from "@/shared/store/useAppStore";
+import type { AppStore } from "@/shared/store/useAppStore";
 import { initializeMockData } from "@/shared/data/mockData";
 import { SimpleModePage } from "@/pages/SimpleModePage";
 import { UIModeSwitch } from "@/features/ui-mode-switch/ui/UIModeSwitch";
@@ -1296,7 +1297,7 @@ function Layout() {
   const [expanded, setExpanded] = useLocalStorage<boolean>("elveum:sidebar", true);
   const { scope } = useScope();
   const sections = sectionsFor(scope);
-  const uiMode = useAppStore(state => state.uiMode);
+  const uiMode = useAppStore((state: AppStore) => state.uiMode);
 
   // Initialize mock data on mount
   React.useEffect(() => {

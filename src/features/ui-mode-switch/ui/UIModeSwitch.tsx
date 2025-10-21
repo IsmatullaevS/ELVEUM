@@ -1,10 +1,11 @@
 import { useAppStore } from '@/shared/store/useAppStore';
+import type { AppStore } from '@/shared/store/useAppStore';
 import { Icon } from '@/shared/ui/Icon';
 import { cn } from '@/shared/lib/utils';
 
 export function UIModeSwitch() {
-  const uiMode = useAppStore(state => state.uiMode);
-  const toggleUIMode = useAppStore(state => state.toggleUIMode);
+  const uiMode = useAppStore((state: AppStore) => state.uiMode);
+  const toggleUIMode = useAppStore((state: AppStore) => state.toggleUIMode);
 
   return (
     <button

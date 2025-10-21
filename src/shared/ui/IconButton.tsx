@@ -1,5 +1,5 @@
 import React from "react";
-import { Icon } from "@/shared/ui/Icon";
+import { Icon, type IconName } from "@/shared/ui/Icon";
 
 const useDpr = () => {
   const [dpr, setDpr] = React.useState<number>(typeof window !== "undefined" ? window.devicePixelRatio || 1 : 1);
@@ -12,7 +12,7 @@ const useDpr = () => {
 };
 
 type Props = {
-  name: string;
+  name: IconName;
   label: string;
   onClick?: () => void;
   size?: number;

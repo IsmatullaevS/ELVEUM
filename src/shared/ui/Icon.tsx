@@ -5,7 +5,8 @@ import {
   Search, HelpCircle, Bell, MessageCircle, Newspaper,
   CheckCircle, Mail, ExternalLink,
   ChevronLeft, ChevronRight, User, X, ChevronUp, ChevronDown,
-  Zap, Tag, Star, CalendarDays, DollarSign
+  Zap, Tag, Star, CalendarDays, DollarSign,
+  Layout, LayoutGrid, Clock, MessageSquare, Play, Check
 } from 'lucide-react';
 
 export type IconName =
@@ -13,7 +14,8 @@ export type IconName =
   | 'team' | 'reports' | 'addons' | 'settings'
   | 'search' | 'help' | 'notifications' | 'chat' | 'news' | 'check' | 'mail' | 'external'
   | 'chevron_left' | 'chevron_right' | 'user' | 'close' | 'expand_less' | 'expand_more'
-  | 'calendar_month' | 'grade' | 'sell' | 'bolt' | 'tag';
+  | 'calendar_month' | 'grade' | 'sell' | 'bolt' | 'tag'
+  | 'Layout' | 'LayoutGrid' | 'Calendar' | 'Clock' | 'User' | 'MessageSquare' | 'Check' | 'Play' | 'X';
 
 const map: Record<IconName, React.ComponentType<any>> = {
   home: Home,
@@ -46,6 +48,15 @@ const map: Record<IconName, React.ComponentType<any>> = {
   close: X,
   expand_less: ChevronUp,
   expand_more: ChevronDown,
+  Layout: Layout,
+  LayoutGrid: LayoutGrid,
+  Calendar: Calendar,
+  Clock: Clock,
+  User: User,
+  MessageSquare: MessageSquare,
+  Check: Check,
+  Play: Play,
+  X: X,
 };
 
 export function Icon({

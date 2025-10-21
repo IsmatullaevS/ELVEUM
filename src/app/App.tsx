@@ -154,7 +154,7 @@ function ContextChip({ value, onChange }: { value: Scope; onChange: (s: Scope) =
     >
       <span
         className="absolute left-0 top-1 bottom-1 rounded-full bg-[var(--accent)] pointer-events-none
-                   will-change-transform will-change-[width]
+                   will-change-[transform,width]
                    transition-[transform,width] duration-300 ease-[cubic-bezier(.2,.8,.2,1)]
                    motion-reduce:transition-none"
         style={{ transform: `translateX(${thumb.left}px)`, width: thumb.width || 0 }}
@@ -315,7 +315,7 @@ function SegmentedView({ value, onChange }: { value: CalendarView; onChange: (v:
       <span
         aria-hidden
         className="absolute left-0 top-1 bottom-1 rounded-full bg-[var(--accent)] pointer-events-none
-                   will-change-transform will-change-[width]
+                   will-change-[transform,width]
                    transition-[transform,width] duration-300 ease-[cubic-bezier(.2,.8,.2,1)]
                    motion-reduce:transition-none"
         style={{ transform: `translateX(${thumb.left}px)`, width: thumb.width || 0 }}

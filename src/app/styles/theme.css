@@ -1,0 +1,52 @@
+
+:root {
+  --elv-bg: #F7F8FA;
+  --elv-surface: #FFFFFF;
+  --elv-panel: #FFFFFF;
+  --elv-border: rgba(10,12,14,0.08);
+  --elv-muted: rgba(10,12,14,0.62);
+
+  --elv-primary: #2563EB;
+  --elv-primary-weak: #E8EFFF;
+  --elv-accent: #10B981;
+  --elv-danger: #EF4444;
+
+  --elv-grid: rgba(10,12,14,0.06);
+  --elv-grid-strong: rgba(10,12,14,0.12);
+  --elv-hatch: repeating-linear-gradient(
+     -45deg,
+     rgba(10,12,14,0.05) 0px,
+     rgba(10,12,14,0.05) 6px,
+     transparent 6px,
+     transparent 12px
+  );
+
+  --elv-event-bg: #EEF2FF;
+  --elv-event-border: #C7D2FE;
+  --elv-shadow: 0 6px 24px rgba(8,10,12,.10);
+}
+
+html.dark {
+  --elv-bg: #0B0B0C;
+  --elv-surface: #111214;
+  --elv-panel: #141518;
+  --elv-border: rgba(255,255,255,0.08);
+  --elv-muted: rgba(255,255,255,0.55);
+
+  --elv-grid: rgba(255,255,255,0.06);
+  --elv-grid-strong: rgba(255,255,255,0.12);
+  --elv-hatch: repeating-linear-gradient(
+     -45deg,
+     rgba(255,255,255,0.06) 0px,
+     rgba(255,255,255,0.06) 6px,
+     transparent 6px,
+     transparent 12px
+  );
+
+  --elv-event-bg: rgba(120, 119, 255, 0.10);
+  --elv-event-border: rgba(120, 119, 255, 0.45);
+  --elv-shadow: 0 6px 24px rgba(0,0,0,.25);
+}
+
+.elv-card { background: var(--elv-panel); border:1px solid var(--elv-border); border-radius: 16px; }
+.elv-border { border-color: var(--elv-border); }

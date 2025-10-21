@@ -1,0 +1,77 @@
+:root {
+  --apple-blue: #007AFF;
+  --apple-green: #34C759;
+  --apple-indigo: #5856D6;
+  --apple-orange: #FF9500;
+  --apple-red: #FF3B30;
+  --apple-teal: #5AC8FA;
+  --apple-gray-1: #8E8E93;
+  --apple-gray-2: #AEAEB2;
+  --apple-gray-3: #C7C7CC;
+  --apple-gray-4: #D1D1D6;
+  --apple-gray-5: #E5E5EA;
+  --apple-gray-6: #F2F2F7;
+
+  --card-bg: #ffffff;
+  --card-border: rgba(0,0,0,0.08);
+  --card-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.06);
+  --text: #111111;
+  --subtle: #6B7280;
+}
+
+html, body {
+  background: var(--apple-gray-6);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: var(--font-sans);
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  box-shadow: var(--card-shadow);
+}
+
+.card-header {
+  font-family: var(--font-heading);
+  padding: 16px 20px 4px;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.card-content {
+  padding: 12px 20px 20px;
+}
+
+.badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  height: 24px; padding: 0 10px; border-radius: 48px;
+  font-size: 12px; border: 1px solid var(--card-border);
+  background: #fff;
+}
+
+.kpi {
+  font-size: 40px; font-weight: 700; letter-spacing: -0.02em;
+}
+
+.table {
+  width: 100%; border-collapse: collapse;
+}
+.table th, .table td {
+  padding: 12px 8px; border-top: 1px solid var(--card-border);
+  text-align: left; font-size: 14px;
+}
+.table thead th { font-size: 12px; color: var(--subtle); font-weight: 600; }
+.mono { font-variant-numeric: tabular-nums lining-nums; font-weight: 600; font-family: var(--font-mono); }
+.small { font-size: 12px; color: var(--subtle); }
+
+/* === Unified Heading Utilities === */
+.heading { font-family: var(--font-heading); font-weight: 700; letter-spacing: -0.01em; }
+.h1 { composes: heading; font-size: 24px; }
+.h2 { composes: heading; font-size: 20px; }
+.h3 { composes: heading; font-size: 16px; }
+
+/* Interface micro-headings */
+.label-strong { font-family: var(--font-sans); font-weight: 500; font-size: 14px; letter-spacing: .005em; color: rgba(11,15,20,.85); }

@@ -1,5 +1,6 @@
 import { CalendarDayPage } from "@/pages/calendar-day";
 import { HomePage } from "@/pages/home";
+import { CatalogPage } from "@/pages/CatalogPage";
 import "@/shared/theme/apple.css";
 import React from "react";
 import { Routes, Route, Link, useLocation, useSearchParams } from "react-router-dom";
@@ -1325,7 +1326,7 @@ function Layout() {
             <StickySubheader />
             <Routes>
               {sections.map((s) => (
-                <Route key={s.key} path={s.path} element={s.key === "home" ? <HomePage /> : (s.key === "work" ? <CalendarDayPage /> : <PageStub />)} />
+                <Route key={s.key} path={s.path} element={s.key === "home" ? <HomePage /> : (s.key === "work" ? <CalendarDayPage /> : (s.key === "catalog" ? <CatalogPage /> : <PageStub />))} />
               ))}
               <Route path="*" element={<PageStub />} />
               <Route path="/" element={<HomePage />} />

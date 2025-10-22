@@ -5,6 +5,34 @@
 
 :root {
   --accent: #3A3A3C;
+
+  /* Design Token CSS Variables - will be set dynamically by ThemeProvider */
+  /* These are placeholder values, actual values come from the theme */
+
+  /* Typography */
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.5;
+
+  /* Transitions */
+  --transition-fast: 150ms;
+  --transition-base: 250ms;
+  --transition-slow: 350ms;
+}
+
+/* Body with theme support */
+body {
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  transition: background-color var(--transition-base) ease,
+              color var(--transition-base) ease;
+}
+
+/* Плавные переходы для всех элементов при смене темы */
+* {
+  transition-property: background-color, color, border-color;
+  transition-duration: var(--transition-base);
+  transition-timing-function: ease;
 }
 
 /* Accent glass pill (Apple-like liquid glass) */

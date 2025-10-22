@@ -14,6 +14,7 @@ import type { AppStore } from "@/shared/store/useAppStore";
 import { initializeMockData } from "@/shared/data/mockData";
 import { SimpleModePage } from "@/pages/SimpleModePage";
 import { UIModeSwitch } from "@/features/ui-mode-switch/ui/UIModeSwitch";
+import { ThemeProvider } from "@/shared/lib/theme/ThemeProvider";
 
 const STR = {
   brand: "ELVEUM",
@@ -1357,5 +1358,9 @@ function runSelfTests() {
 runSelfTests();
 
 export default function App() {
-  return <Layout />;
+  return (
+    <ThemeProvider defaultTheme="light" storageKey="elveum-theme">
+      <Layout />
+    </ThemeProvider>
+  );
 }

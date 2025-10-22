@@ -1,37 +1,39 @@
 
 :root {
-  --elv-bg: #F7F8FA;
+  /* Slate Minimal Design System - Light Theme */
+  --elv-bg: #f8fafc;
   --elv-surface: #FFFFFF;
   --elv-panel: #FFFFFF;
-  --elv-border: rgba(10,12,14,0.08);
-  --elv-muted: rgba(10,12,14,0.62);
+  --elv-border: #e2e8f0;
+  --elv-muted: #64748b;
 
-  --elv-primary: #2563EB;
-  --elv-primary-weak: #E8EFFF;
-  --elv-accent: #10B981;
-  --elv-danger: #EF4444;
+  --elv-primary: #0f172a;        /* slate-900 */
+  --elv-primary-weak: #f1f5f9;   /* slate-100 */
+  --elv-accent: #14b8a6;         /* teal-500 */
+  --elv-danger: #f43f5e;         /* rose-500 */
 
-  --elv-grid: rgba(10,12,14,0.06);
-  --elv-grid-strong: rgba(10,12,14,0.12);
+  --elv-grid: rgba(15,23,42,0.06);
+  --elv-grid-strong: rgba(15,23,42,0.12);
   --elv-hatch: repeating-linear-gradient(
      -45deg,
-     rgba(10,12,14,0.05) 0px,
-     rgba(10,12,14,0.05) 6px,
+     rgba(15,23,42,0.05) 0px,
+     rgba(15,23,42,0.05) 6px,
      transparent 6px,
      transparent 12px
   );
 
-  --elv-event-bg: #EEF2FF;
-  --elv-event-border: #C7D2FE;
-  --elv-shadow: 0 6px 24px rgba(8,10,12,.10);
+  --elv-event-bg: #ccfbf1;      /* teal-100 */
+  --elv-event-border: #14b8a6;  /* teal-500 */
+  --elv-shadow: 0 6px 24px rgba(15,23,42,.10);
 }
 
 html.dark {
-  --elv-bg: #0B0B0C;
-  --elv-surface: #111214;
-  --elv-panel: #141518;
+  /* Slate Minimal Design System - Dark Theme */
+  --elv-bg: #0f172a;          /* slate-900 */
+  --elv-surface: #1e293b;     /* slate-800 */
+  --elv-panel: #334155;       /* slate-700 */
   --elv-border: rgba(255,255,255,0.08);
-  --elv-muted: rgba(255,255,255,0.55);
+  --elv-muted: #94a3b8;       /* slate-400 */
 
   --elv-grid: rgba(255,255,255,0.06);
   --elv-grid-strong: rgba(255,255,255,0.12);
@@ -43,8 +45,8 @@ html.dark {
      transparent 12px
   );
 
-  --elv-event-bg: rgba(120, 119, 255, 0.10);
-  --elv-event-border: rgba(120, 119, 255, 0.45);
+  --elv-event-bg: rgba(20, 184, 166, 0.10);  /* teal-500 with opacity */
+  --elv-event-border: rgba(20, 184, 166, 0.45);
   --elv-shadow: 0 6px 24px rgba(0,0,0,.25);
 }
 

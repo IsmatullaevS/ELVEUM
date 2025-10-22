@@ -128,13 +128,13 @@ export function formatDuration(minutes: number): string {
 
 export function getVisitStatusColor(status: string): string {
   const colors = {
-    upcoming: 'bg-blue-100 text-blue-700',
-    in_progress: 'bg-green-100 text-green-700',
-    completed: 'bg-gray-100 text-gray-700',
-    cancelled: 'bg-red-100 text-red-700',
+    upcoming: 'bg-teal-100 text-teal-700',
+    in_progress: 'bg-teal-100 text-teal-700',
+    completed: 'bg-slate-100 text-slate-700',
+    cancelled: 'bg-rose-100 text-rose-700',
     no_show: 'bg-orange-100 text-orange-700',
   };
-  return colors[status as keyof typeof colors] || 'bg-gray-100 text-gray-700';
+  return colors[status as keyof typeof colors] || 'bg-slate-100 text-slate-700';
 }
 
 export function getVisitStatusLabel(status: string): string {

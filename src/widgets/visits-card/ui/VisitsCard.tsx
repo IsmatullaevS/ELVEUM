@@ -21,14 +21,14 @@ const scoped = `
 .vc-scope .vc-scroll::-webkit-scrollbar-thumb{background:rgba(0,0,0,.28);border-radius:8px;border:2px solid transparent;background-clip:padding-box}
 .vc-scope .vc-scroll:hover::-webkit-scrollbar-thumb{background:rgba(0,0,0,.36)}
 .vc-scope .vc-scroll{scrollbar-width:thin;scrollbar-color:rgba(0,0,0,.36) transparent}
-.vc-scope .vc-title{font-family:var(--font-heading);font-weight:700;font-size:18px;line-height:1.35}
+.vc-scope .vc-title{font-family:var(--font-display);font-weight:700;font-size:18px;line-height:1.35}
 .vc-scope .vc-row{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 0}
-.vc-scope .vc-list .vc-row + .vc-row{border-top:1px solid var(--card-border)}
-/* status variants scoped to avoid affecting global .badge */
-.vc-scope .badge[data-v=booked]{color:#0A5DC3;background:rgba(0,122,255,.12);border-color:rgba(0,122,255,.24)}
-.vc-scope .badge[data-v=done]{color:#1E7A3F;background:rgba(52,199,89,.14);border-color:rgba(52,199,89,.30)}
-.vc-scope .badge[data-v=canceled]{color:#B00020;background:rgba(255,59,48,.12);border-color:rgba(255,59,48,.28)}
-.vc-scope .badge[data-v=no-show]{color:#9A5B00;background:rgba(255,149,0,.14);border-color:rgba(255,149,0,.30)}
+.vc-scope .vc-list .vc-row + .vc-row{border-top:1px solid #e2e8f0}
+/* status variants using Slate Minimal colors */
+.vc-scope .badge[data-v=booked]{color:#0d9488;background:#ccfbf1;border-color:#14b8a6}
+.vc-scope .badge[data-v=done]{color:#0f766e;background:#ccfbf1;border-color:#14b8a6}
+.vc-scope .badge[data-v=canceled]{color:#e11d48;background:#ffe4e6;border-color:#f43f5e}
+.vc-scope .badge[data-v=no-show]{color:#ea580c;background:#ffedd5;border-color:#fb923c}
 `;
 
 const variantFor = (status: Visit["status"]) =>

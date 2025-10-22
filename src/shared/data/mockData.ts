@@ -86,6 +86,26 @@ const mockServices: Service[] = [
     category: 'styling',
     isActive: true,
   },
+  {
+    id: 'service-5',
+    businessId: 'business-1',
+    name: 'Детская стрижка',
+    description: 'Стрижка для детей до 12 лет',
+    duration: 25,
+    price: 50000,
+    category: 'haircut',
+    isActive: true,
+  },
+  {
+    id: 'service-6',
+    businessId: 'business-1',
+    name: 'VIP Стрижка',
+    description: 'Премиум стрижка с консультацией стилиста',
+    duration: 60,
+    price: 150000,
+    category: 'haircut',
+    isActive: false,
+  },
 ];
 
 // ========== MOCK EMPLOYEES ==========
@@ -96,7 +116,7 @@ const mockEmployees: Employee[] = [
     userId: 'user-1',
     businessId: 'business-1',
     position: 'Мастер-парикмахер',
-    services: ['service-1', 'service-2', 'service-3', 'service-4'],
+    services: ['service-1', 'service-2', 'service-3', 'service-4', 'service-5', 'service-6'],
     schedule: defaultSchedule,
     salary: {
       type: 'percentage',

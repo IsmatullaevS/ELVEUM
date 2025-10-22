@@ -95,6 +95,9 @@ export function formatCompactCurrency(amount: number, currency: 'UZS' | 'USD' = 
   return formatCurrency(amount, currency);
 }
 
+// Alias for formatCurrency
+export const formatPrice = formatCurrency;
+
 // ========== PHONE FORMATTING ==========
 
 export function formatPhone(phone: string): string {

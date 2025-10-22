@@ -191,3 +191,26 @@ export interface BusinessSettings {
     slotDuration: number;
   };
 }
+
+// ========== SERVICE STATISTICS ==========
+
+export interface ServiceStats {
+  serviceId: string;
+  totalBookings: number;
+  totalRevenue: number;
+  averageRating?: number;
+  lastBookedAt?: string;
+  popularityRank?: number;
+}
+
+// ========== CATEGORY ==========
+
+export const SERVICE_CATEGORIES: Record<ServiceCategory, string> = {
+  haircut: 'Стрижка',
+  beard: 'Борода',
+  coloring: 'Окрашивание',
+  styling: 'Укладка',
+  spa: 'SPA',
+  nails: 'Маникюр/Педикюр',
+  other: 'Другое',
+};

@@ -3,29 +3,64 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --accent: #3A3A3C;
+@layer base {
+  :root {
+    /* ===== ЦВЕТА - SLATE ===== */
+    --slate-50: #f8fafc;
+    --slate-100: #f1f5f9;
+    --slate-200: #e2e8f0;
+    --slate-300: #cbd5e1;
+    --slate-400: #94a3b8;
+    --slate-500: #64748b;
+    --slate-600: #475569;
+    --slate-700: #334155;
+    --slate-800: #1e293b;
+    --slate-900: #0f172a;
 
-  /* Design Token CSS Variables - will be set dynamically by ThemeProvider */
-  /* These are placeholder values, actual values come from the theme */
+    /* ===== ЦВЕТА - SUCCESS (TEAL) ===== */
+    --teal-50: #f0fdfa;
+    --teal-100: #ccfbf1;
+    --teal-500: #14b8a6;
+    --teal-600: #0d9488;
+    --teal-700: #0f766e;
 
-  /* Typography */
-  font-family: var(--font-sans);
-  font-size: 16px;
-  line-height: 1.5;
+    /* ===== ЦВЕТА - ERROR (ROSE) ===== */
+    --rose-50: #fff1f2;
+    --rose-100: #ffe4e6;
+    --rose-500: #f43f5e;
+    --rose-600: #e11d48;
 
-  /* Transitions */
-  --transition-fast: 150ms;
-  --transition-base: 250ms;
-  --transition-slow: 350ms;
-}
+    /* ===== ЦВЕТА - WARNING (ORANGE) ===== */
+    --orange-50: #fff7ed;
+    --orange-100: #ffedd5;
+    --orange-400: #fb923c;
+    --orange-500: #f97316;
 
-/* Body with theme support */
-body {
-  background-color: var(--color-bg-primary);
-  color: var(--color-text-primary);
-  transition: background-color var(--transition-base) ease,
-              color var(--transition-base) ease;
+    /* ===== ШРИФТЫ ===== */
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-display: 'Satoshi', sans-serif;
+
+    /* ===== TRANSITIONS ===== */
+    --transition-fast: 150ms;
+    --transition-base: 250ms;
+    --transition-slow: 350ms;
+  }
+
+  /* Базовые стили для body */
+  body {
+    @apply font-sans text-slate-700 bg-slate-50;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Заголовки используют Satoshi */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display text-slate-900;
+  }
+
+  /* Цифры с выравниванием */
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
 }
 
 /* Плавные переходы для всех элементов при смене темы */
@@ -181,23 +216,13 @@ body { overflow-x: hidden; }
 .icon-button:hover { background: rgba(0,0,0,.04); }
 .icon-button:active { background: rgba(0,0,0,.06); transform: scale(.95); }
 
-/* Typography layers */
-@layer base {
-  :root {
-    --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", Ubuntu, Cantarell, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
-    --font-heading: Manrope, Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", Arial, sans-serif;
-    --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  }
-  html { font-family: var(--font-sans); }
-  body { @apply font-normal; }
-  h1,h2,h3,h4,h5,h6 { font-family: var(--font-heading); @apply font-bold; letter-spacing: -0.01em; }
-}
-
+/* Updated utilities for Slate Minimal design system */
 @layer utilities {
   .text-ui { @apply font-medium; }
+
+  /* Numeric classes use tabular-nums for alignment */
   .font-numeric, .font-price, .font-timer, .font-counter {
-    font-family: var(--font-mono);
-    font-weight: 600;
     font-variant-numeric: tabular-nums lining-nums;
+    @apply font-semibold;
   }
 }

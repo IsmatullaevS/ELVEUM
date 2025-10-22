@@ -3,93 +3,89 @@ export default {
   content: ['./index.html', './src/**/*.{ts,tsx}'],
   theme: {
     extend: {
-      // Семантические цвета через CSS-переменные
+      // ===== ЦВЕТА =====
       colors: {
-        background: {
-          primary: 'var(--color-bg-primary)',
-          secondary: 'var(--color-bg-secondary)',
-          tertiary: 'var(--color-bg-tertiary)',
-          inverse: 'var(--color-bg-inverse)',
-          brand: 'var(--color-bg-brand)',
-          success: 'var(--color-bg-success)',
-          error: 'var(--color-bg-error)',
-          warning: 'var(--color-bg-warning)',
+        slate: {
+          50: '#f8fafc',
+          100: '#f1f5f9',
+          200: '#e2e8f0',
+          300: '#cbd5e1',
+          400: '#94a3b8',
+          500: '#64748b',
+          600: '#475569',
+          700: '#334155',
+          800: '#1e293b',
+          900: '#0f172a',
         },
-
-        text: {
-          primary: 'var(--color-text-primary)',
-          secondary: 'var(--color-text-secondary)',
-          tertiary: 'var(--color-text-tertiary)',
-          inverse: 'var(--color-text-inverse)',
-          brand: 'var(--color-text-brand)',
-          success: 'var(--color-text-success)',
-          error: 'var(--color-text-error)',
-          warning: 'var(--color-text-warning)',
-          link: 'var(--color-text-link)',
+        teal: {
+          50: '#f0fdfa',
+          100: '#ccfbf1',
+          200: '#99f6e4',
+          300: '#5eead4',
+          400: '#2dd4bf',
+          500: '#14b8a6',
+          600: '#0d9488',
+          700: '#0f766e',
         },
-
-        border: {
-          DEFAULT: 'var(--color-border-default)',
-          strong: 'var(--color-border-strong)',
-          subtle: 'var(--color-border-subtle)',
-          brand: 'var(--color-border-brand)',
-          error: 'var(--color-border-error)',
+        rose: {
+          50: '#fff1f2',
+          100: '#ffe4e6',
+          200: '#fecdd3',
+          300: '#fda4af',
+          400: '#fb7185',
+          500: '#f43f5e',
+          600: '#e11d48',
+          700: '#be123c',
+        },
+        orange: {
+          50: '#fff7ed',
+          100: '#ffedd5',
+          200: '#fed7aa',
+          300: '#fdba74',
+          400: '#fb923c',
+          500: '#f97316',
+          600: '#ea580c',
         },
       },
 
-      // Типографика
+      // ===== ШРИФТЫ =====
       fontFamily: {
-        sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'Noto Sans', 'Ubuntu', 'Cantarell', 'Helvetica Neue', 'Arial', 'sans-serif'],
-        heading: ['Manrope', 'Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'Noto Sans', 'Arial', 'sans-serif'],
-        mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace'],
-        numeric: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
+        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+        display: ['Satoshi', 'sans-serif'],
       },
 
-      fontSize: {
-        xs: '0.75rem',      // 12px
-        sm: '0.875rem',     // 14px
-        base: '1rem',       // 16px
-        lg: '1.125rem',     // 18px
-        xl: '1.25rem',      // 20px
-        '2xl': '1.5rem',    // 24px
-        '3xl': '1.875rem',  // 30px
-        '4xl': '2.25rem',   // 36px
+      // ===== ОТСТУПЫ =====
+      spacing: {
+        '1': '4px',
+        '2': '8px',
+        '3': '12px',
+        '4': '16px',
+        '5': '20px',
+        '6': '24px',
+        '8': '32px',
+        '10': '40px',
+        '12': '48px',
+        '16': '64px',
+        '20': '80px',
       },
 
-      fontWeight: {
-        normal: 400,
-        medium: 500,
-        semibold: 600,
-        bold: 700,
-      },
-
-      lineHeight: {
-        tight: 1.25,
-        normal: 1.5,
-        relaxed: 1.75,
-      },
-
-      // Скругления
+      // ===== РАДИУСЫ =====
       borderRadius: {
-        none: '0',
-        sm: '0.25rem',    // 4px
-        base: '0.5rem',   // 8px
-        md: '0.75rem',    // 12px
-        lg: '1rem',       // 16px
-        xl: '1.5rem',     // 24px
-        full: '9999px',   // Полное скругление
+        'sm': '4px',
+        'DEFAULT': '6px',
+        'md': '8px',
+        'lg': '12px',
+        'xl': '16px',
+        '2xl': '24px',
       },
 
-      // Тени
+      // ===== ТЕНИ =====
       boxShadow: {
-        card: 'var(--shadow-card)',
-      },
-
-      // Transitions
-      transitionDuration: {
-        fast: '150ms',
-        base: '250ms',
-        slow: '350ms',
+        'sm': '0 1px 2px rgba(0, 0, 0, 0.05)',
+        'DEFAULT': '0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06)',
+        'md': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+        'lg': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+        'xl': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
       },
     },
   },

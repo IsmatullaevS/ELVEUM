@@ -1,24 +1,23 @@
-import React from 'react';
+import { HTMLAttributes } from 'react';
 import { cn } from '@/shared/lib/utils';
 
-interface CardProps {
-  children: React.ReactNode;
-  className?: string;
+interface CardProps extends HTMLAttributes<HTMLDivElement> {
+  variant?: 'default' | 'bordered' | 'elevated';
 }
 
-export function Card({ children, className }: CardProps) {
+export const Card = ({ className, variant = 'default', children, ...props }: CardProps) => {
+  const variants = {
+    default: 'bg-white border border-slate-200',
+    bordered: 'bg-slate-50 border border-slate-300',
+    elevated: 'bg-white shadow-md',
+  };
+
   return (
     <div
-      className={cn(
-        // Используем семантические токены через Tailwind
-        'bg-[var(--color-card-bg)]',
-        'border border-[var(--color-card-border)]',
-        'shadow-card',
-        'rounded-lg p-6',
-        className
-      )}
+      className={cn('rounded-lg p-6', variants[variant], className)}
+      {...props}
     >
       {children}
     </div>
   );
-}
+};
